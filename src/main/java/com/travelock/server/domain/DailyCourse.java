@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DailyCourse implements Serializable {
+public class DailyCourse extends BaseTime implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long dailyCourseId;
 

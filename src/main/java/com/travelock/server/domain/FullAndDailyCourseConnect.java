@@ -12,7 +12,7 @@ import net.minidev.json.annotate.JsonIgnore;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "full_and_daily_course_connect")
-public class FullAndDailyCourseConnect {
+public class FullAndDailyCourseConnect extends BaseTime {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long fullDailyCourseConnectId;
     private Integer dailyNum;
