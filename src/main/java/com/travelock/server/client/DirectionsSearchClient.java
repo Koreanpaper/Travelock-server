@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Mono;
@@ -29,7 +30,11 @@ public class DirectionsSearchClient {
         WebClient webClient = WebClient.builder()
                 .baseUrl(TMAP_DIRECTIONS_URL)
                 .defaultHeaders(httpHeaders -> httpHeaders.addAll(headers))
+                .exchangeStrategies(ExchangeStrategies.builder()
+                        .codecs(configurer -> configurer.defaultCodecs().maxInMemorySize(10 * 1024 * 1024))
+                        .build())
                 .build();
+
 
 
         // Request API
